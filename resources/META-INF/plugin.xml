@@ -1,0 +1,66 @@
+<idea-plugin>
+    <id>com.one.plugin</id>
+    <name>OnePlugin</name>
+    <version>1.0.0</version>
+    <vendor email="c910527@gmail.com" url="https://github.com/c910527">One</vendor>
+
+    <description><![CDATA["
+        多國語系檔案轉換<br/>
+        支援 string.xml 轉換至 string.cvs<br/>
+        支援 string.cvs 轉換至 string.xml<br/>
+        選中字串轉大寫<br/>
+        選中字串轉小寫<br/>
+        "]]></description>
+
+    <change-notes><![CDATA["
+        多國語系檔案轉換<br/>
+        支援 string.xml 轉換至 string.cvs<br/>
+        支援 string.cvs 轉換至 string.xml<br/>
+        選中字串轉大寫<br/>
+        選中字串轉小寫<br/>
+        "]]></change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+
+    <!--    <depends>com.intellij.modules.lang</depends>-->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="actions.group.StringConvertGroup"
+               class="group.StringConvertGroup" popup="true"
+               text="String Convert" description="String convert">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="EditSource"/>
+            <action id="XMLToCSV.Plugin" class="action.XMLToCSV" text="XML To CSV"
+                    description="XML To CSV">
+            </action>
+            <action id="CSVToXML.Plugin" class="action.CSVToXML" text="CSV To XML" description="CSV To XML">
+            </action>
+        </group>
+        <group id="actions.group.ReplaceGroup"
+               class="group.ReplaceGroup" popup="true"
+               text="Replace" description="Replace">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <action id="ReplaceToUpperCase.Action" class="action.ReplaceToUpperCase" text="ReplaceToUpperCase"
+                    description="ReplaceToUpperCase">
+            </action>
+            <action id="ReplaceToLowerCase.Action" class="action.ReplaceToLowerCase" text="ReplaceToLowerCase"
+                    description="ReplaceToLowerCase">
+            </action>
+        </group>
+
+    </actions>
+    <application-components>
+        <component>
+            <implementation-class>ToolRegistration</implementation-class>
+        </component>
+    </application-components>
+</idea-plugin>
